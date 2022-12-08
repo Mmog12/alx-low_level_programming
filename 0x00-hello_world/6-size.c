@@ -1,14 +1,12 @@
-#include <stdio.h>
+#include <unistd.h>
 /**
- * main - Entry
- * Return: Always 0
+ *main-program entry point.
+ *
+ *Return: 1 on success.
  */
 int main(void)
 {
-	printf("Size of a char: %id byte(s)\n", sizeof(char));
-	printf("Size of an int: %id byte(s)\n", sizeof(int));
-	printf("Size of a long int: %id byte(s)\n", sizeof(long int));
-	printf("Size of a long long int: %id byte(s)\n", sizeof(long long int));
-	printf("Size of a float: %id byte(s)\n", sizeof(float));
-		return (0);
+
+write(2, "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 59);
+    return (1);
 }
