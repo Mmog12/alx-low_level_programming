@@ -1,11 +1,12 @@
 #include "main.h"
 /**
- * print_alphapet - entry point
- * Return: 0
+ * print_alphapet - prints the alpha in lowercase
  */
+
 void print_alphapet(void)
 {
-	char c = 'a';
+	char c;
+
 	while (c <= 'z')
 	{
 		_putchar(c);
