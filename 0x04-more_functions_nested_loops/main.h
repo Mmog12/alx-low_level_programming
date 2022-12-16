@@ -1,6 +1,7 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef HOLBERTON_H
+#define HOLBERTON_H
 
+int _putchar(char c);
 int _isupper(int c);
 int _isdigit(int c);
 int mul(int a, int b);
@@ -13,4 +14,4 @@ void print_square(int size);
 void print_triangle(int size);
 void print_number(int n);
 
-#endif /*MAIN_H */
+#endif /* HOLBERTON_H */
