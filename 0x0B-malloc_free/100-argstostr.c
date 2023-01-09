@@ -1,53 +1,51 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * _strlen - returns the length of a string
- * @s: string s
- * Return: length of string
+ * main - function
+ *@argc: length of argv
+ *@argv: number of argument
+ *Return: Always 0
  */
-int _strlen(char *s)
-{
-	int len = 0;
 
-	while (*s++)
-		len++;
-	return (len);
+int main(int argc, char *argv[])
+{
+/*Declaring variables*/
+int position, total, change, aux;
+int coins[] = {25, 10, 5, 2, 1}; /*Array int*/
+
+position = total = change = aux = 0;
+
+if (argc != 2)
+{
+printf("Error\n");
+return (1);
 }
 
-/**
- * argstostr - concatenates all the arguments of your program
- * @ac: argument count
- * @av: argument vector
- * Return: concatenated string
- */
-char *argstostr(int ac, char **av)
-{
-	int i, j, len, total;
-	int m = 0;
-	char *ptr;
+total = atoi(argv[1]); /*Covert str to int*/
 
-	if (!ac || !av)
-		return (NULL);
-	total = 0;
-	for (i = 0; i < ac; i++)
-	{
-		len = _strlen(av[i]) + 1;
-		total += len;
-	}
-	ptr = malloc(sizeof(char) * total + 1);
-	if (!ptr)
-		return (NULL);
-	for (i = 0; i < ac; i++)
-	{
-		len = _strlen(av[i]);
-		for (j = 0; j < len; j++, m++)
-		{
-			ptr[m] = av[i][j];
-		}
-		ptr[m++] = '\n';
-	}
-	ptr[m] = '\0';
-	return (ptr);
+if (total <= 0)
+{
+printf("0\n");
+return (0);
+}
+
+/*Declaring While*/
+
+while (coins[position] != '\0')
+
+{
+if (total >= coins[position])
+{
+aux = (total / coins[position]);
+change += aux;
+total -= coins[position] * aux;
+}
+
+position++;
+
+}
+
+printf("%d\n", change);
+return (0);
 }
