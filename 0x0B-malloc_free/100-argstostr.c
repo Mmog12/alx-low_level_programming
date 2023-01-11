@@ -1,87 +1,53 @@
-#include <stdio.h>
-		
-#include <stdlib.h>
-		
 #include "main.h"
-		
+#include <stdio.h>
+#include <stdlib.h>
 
-		
 /**
-		
- * main - prints the minimum number of coins to
-		
- * make change for an amount of money
-		
- * @argc: number of arguments
-		
- * @argv: array of arguments
-		
- *
-		
- * Return: 0 (Success), 1 (Error)
-		
+ * _strlen - returns the length of a string
+ * @s: string s
+ * Return: length of string
  */
-		
-int main(int argc, char *argv[])
-		
+int _strlen(char *s)
 {
-		
-	int num, j, result;
-		
-	int coins[] = {25, 10, 5, 2, 1};
-		
+	int len = 0;
 
-		
-	if (argc != 2)
-		
+	while (*s++)
+		len++;
+	return (len);
+}
+
+/**
+ * argstostr - concatenates all the arguments of your program
+ * @ac: argument count
+ * @av: argument vector
+ * Return: concatenated string
+ */
+char *argstostr(int ac, char **av)
+{
+	int i, j, len, total;
+	int m = 0;
+	char *ptr;
+
+	if (!ac || !av)
+		return (NULL);
+	total = 0;
+	for (i = 0; i < ac; i++)
 	{
-		
-		printf("Error\n");
-		
-		return (1);
-		
+		len = _strlen(av[i]) + 1;
+		total += len;
 	}
-		
-
-		
-	num = atoi(argv[1]);
-		
-	result = 0;
-		
-
-		
-	if (num < 0)
-		
+	ptr = malloc(sizeof(char) * total + 1);
+	if (!ptr)
+		return (NULL);
+	for (i = 0; i < ac; i++)
 	{
-		
-		printf("0\n");
-		
-		return (0);
-		
-	}
-		
-
-		
-	for (j = 0; j < 5 && num >= 0; j++)
-		
-	{
-		
-		while (num >= coins[j])
-		
+		len = _strlen(av[i]);
+		for (j = 0; j < len; j++, m++)
 		{
-		
-			result++;
-		
-			num -= coins[j];
-		
+			ptr[m] = av[i][j];
 		}
-		
+		ptr[m++] = '\n';
 	}
-		
-
-		
-	printf("%d\n", result);
-		
-	return (0);
-		
+	ptr[m] = '\0';
+	return (ptr);
 }
